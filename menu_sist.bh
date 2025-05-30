@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Corrigido: Espaço após if e antes de [ ]
+
 if [ "$EUID" -ne 0 ]; then
   echo "Por favor, execute como root para obter 100% de êxito"
   exit 1
