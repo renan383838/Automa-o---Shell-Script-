@@ -1,0 +1,48 @@
+#!/bin/bash
+
+if ["$EUID" -ne 0] then
+  echo "Por favor, execute como root para obter 100% de exito"
+  exit 1
+fi
+
+while true; do
+  clear
+  echo "=== Menu de Administração do Sistema ==="
+  echo "A - Exibir o uso do de DISCO"
+  echo "B - Listar todos os procesos em execução"
+  echo "C - Exibir a memória utilizada e disponível"
+  echo "D - Verificar o espaço disponível em um diretório específico"
+  echo "E - Uso da CPU"
+  echo "F - Listar usuarios  ativos"
+  echo "G - Adiciona novo usuário"
+  echo "H - Altera a senha de um usuário"
+  echo "I - Atualizar todos os pacotes do SO não utilizados"
+  echo "J - Desligar a máquina após um tempo determinado"
+  echo "X - Sair"
+  echo "======================================"
+
+  case "$opcao" in
+     A|a)
+	echo "Uso de disco:"
+	df -h
+	;;
+     B|b)
+	echo "Processos em execução"
+	ps aux
+	;;
+     C|c)
+	echo "Processos em execução"
+	free -h
+	;;
+     D|d)
+	read -p "Digite o diretório para verificar: " dir
+	du -sh "$dir"
+	;;
+     E|e)
+	echo  "Monitoramento de CPU (pressione Ctrl+C para Sair): " dir
+	top
+	;;
+     F|f)
+	echo "Usuários ativos:"
+	who
+	;;
