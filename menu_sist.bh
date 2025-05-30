@@ -46,3 +46,38 @@ while true; do
 	echo "Usuários ativos:"
 	who
 	;;
+      
+       
+     G|g)
+            read -p "Digite o nome do novo usuário: " novo_usuario
+            sudo adduser "$novo_usuario"
+            read -p "Pressione Enter para continuar..."
+            ;;
+     H|h)
+            read -p "Digite o nome do usuário: " usuario
+            sudo passwd "$usuario"
+            read -p "Pressione Enter para continuar..."
+            ;;
+     I|i)
+            echo "Atualizando pacotes e limpando sistema..."
+            sudo apt update && sudo apt upgrade -y
+            sudo apt autoremove -y && sudo apt autoclean
+            echo "Sistema atualizado!"
+            read -p "Pressione Enter para continuar..."
+            ;;
+     J|j)
+            read -p "Digite o tempo (em minutos) para desligar: " tempo
+            sudo shutdown -h +"$tempo"
+            echo "Desligamento agendado em $tempo minutos."
+            read -p "Pressione Enter para continuar..."
+            ;;
+     S|s)
+            echo "Saindo..."
+            break
+            ;;
+        *)
+            echo "Opção inválida!"
+            read -p "Pressione Enter para continuar..."
+            ;;
+    esac
+done
